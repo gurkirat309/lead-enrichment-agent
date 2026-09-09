@@ -1,0 +1,38 @@
+[
+  {
+    "domain": "not-a-real-site-xyz123.com",
+    "status": "error",
+    "error": "No usable content retrieved. https://not-a-real-site-xyz123.com (Page.goto: net::ERR_NAME_NOT_RESOLVED at https://not-a-real-site-xyz123.com/\nCall log:\n  - navigating to \"https://not-a-real-site-xyz123.com/\", waiting until \"domcontentloaded\"\n)",
+    "intel": null,
+    "pages_crawled": [],
+    "usage_tokens": null,
+    "estimated_cost_usd": null
+  },
+  {
+    "domain": "vapi.ai",
+    "status": "ok",
+    "error": null,
+    "intel": {
+      "overview": "Vapi provides a unified, API‑first platform for building, testing, and deploying voice AI agents at enterprise scale, offering orchestration, real‑time monitoring, compliance, and low‑latency infrastructure. It handles telephony, integrations, and security so customers can launch voice agents quickly and manage them with built‑in analytics and guardrails.",
+      "target_audience": "Enterprises and development teams building voice AI agents or contact‑center solutions that require scalable, compliant, and low‑latency voice infrastructure.",
+      "contact_emails": [
+        "talent@vapi.ai"
+      ],
+      "team_members": [
+        {
+          "name": "Jason Mitura",
+          "role": "VP of Software Development",
+          "linkedin_url": "https://www.linkedin.com/in/jasonmitura"
+        }
+      ],
+      "confidence_score": 0.88
+    },
+    "pages_crawled": [
+      "https://vapi.ai",
+      "https://vapi.ai/pricing",
+      "https://vapi.ai/careers"
+    ],
+    "usage_tokens": 2767,
+    "estimated_cost_usd": 0.000675
+  }
+]
