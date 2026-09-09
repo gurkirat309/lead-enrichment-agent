@@ -62,8 +62,18 @@ anti-bot, missing fields) is captured as an `error` record so a single bad site
   skips the LLM; bonus enrichment can never break the core run.
 - **Code quality & docs (15%)** — modular one-responsibility files, type hints,
   dataclasses/Pydantic models, this README.
-- **Bonus** — founder LinkedIn search (Tavily/SerpAPI) + per-domain token &
-  estimated-cost tracking.
+### Bonus features (all three implemented)
+
+1. **Search integration** — `enrich.py` looks up founder **LinkedIn URLs** via
+   SerpAPI/Tavily when they aren't on the site, with **name verification** (first
+   and last name must appear in the profile slug) so an unrelated profile is never
+   attached — a wrong URL is worse than none.
+2. **Agentic framework** — a **custom multi-step tool-calling loop**
+   (`nav_agent.py`): the LLM is given the homepage links and a `visit_page` tool
+   and decides, step by step, which subpages to open until it calls `finish`.
+   Enable with `--agentic`; the deterministic path stays the default.
+3. **Cost tracking** — per-domain `usage_tokens` and `estimated_cost_usd` in every
+   record.
 
 ## Setup
 
@@ -82,6 +92,8 @@ cp .env.example .env      # then add your GROQ_API_KEY
 python main.py --input domains.txt --out output.json --csv output.csv
 # or pass domains directly:
 python main.py --domains postman.com supabase.com vapi.ai
+# bonus: LLM-driven agentic navigation instead of deterministic discovery:
+python main.py --domains postman.com --agentic
 ```
 
 ## Environment variables
@@ -132,7 +144,8 @@ lead-enrichment-agent/
     ├── fetch.py                Phase 1 - Playwright + subpage discovery
     ├── clean.py                Phase 2 - HTML → markdown + email harvest
     ├── extract.py              Phase 3 - Groq + Instructor extraction
-    ├── enrich.py               Phase 5 - bonus LinkedIn lookup
+    ├── enrich.py               Bonus - founder LinkedIn lookup (name-verified)
+    ├── nav_agent.py            Bonus - agentic multi-step navigation loop
     └── pipeline.py             Phase 4 - orchestration + resilience
 ```
 

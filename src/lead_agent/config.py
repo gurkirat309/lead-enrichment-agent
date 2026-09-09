@@ -52,6 +52,10 @@ class Settings:
 
     subpage_hints: List[str] = field(default_factory=lambda: list(DEFAULT_SUBPAGE_HINTS))
 
+    # Bonus: use the LLM-driven agentic navigation loop instead of deterministic
+    # subpage discovery. Off by default (the deterministic path is the reliable one).
+    agentic: bool = field(default_factory=lambda: os.getenv("AGENTIC", "").lower() in ("1", "true", "yes"))
+
     def require_groq(self) -> None:
         if not self.groq_api_key:
             raise RuntimeError(

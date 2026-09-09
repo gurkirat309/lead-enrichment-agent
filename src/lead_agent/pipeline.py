@@ -19,8 +19,14 @@ from .models import DomainResult
 async def process_domain(domain: str, cfg: Settings = default_settings) -> DomainResult:
     """Process a single domain end-to-end. Never raises; errors are captured."""
     try:
-        # Phase 1: fetch homepage + discovered subpages (self-isolating).
-        site = await fetch_site(domain, cfg)
+        # Phase 1: fetch homepage + subpages. Agentic (LLM-driven navigation) when
+        # enabled, otherwise the deterministic sitemap+link discovery path.
+        if cfg.agentic:
+            from .nav_agent import agentic_fetch_site
+
+            site = await agentic_fetch_site(domain, cfg)
+        else:
+            site = await fetch_site(domain, cfg)
 
         # Phase 2: clean + token-budget + harvest emails.
         ctx = build_context(site, cfg)

@@ -14,6 +14,7 @@ import json
 from pathlib import Path
 from typing import List
 
+from src.lead_agent.config import settings
 from src.lead_agent.models import DomainResult
 from src.lead_agent.pipeline import run
 
@@ -88,11 +89,20 @@ def main() -> None:
     parser.add_argument("--input", help="Path to a text file with one domain per line.")
     parser.add_argument("--out", default="output.json", help="Output JSON path.")
     parser.add_argument("--csv", dest="csv_path", help="Optional output CSV path.")
+    parser.add_argument(
+        "--agentic",
+        action="store_true",
+        help="Use the LLM-driven agentic navigation loop instead of deterministic discovery.",
+    )
     args = parser.parse_args()
 
     domains = load_domains(args)
     if not domains:
         parser.error("No domains provided. Use --domains or --input.")
+
+    if args.agentic:
+        settings.agentic = True
+        print("[mode] agentic navigation enabled")
 
     results = asyncio.run(run(domains))
 
