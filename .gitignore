@@ -20,3 +20,6 @@ output_*.csv
 .DS_Store
 .vscode/
 .idea/
+
+# Personal prep doc, not for the repo
+LOOM_SCRIPT.md
