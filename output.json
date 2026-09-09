@@ -4,8 +4,8 @@
     "status": "ok",
     "error": null,
     "intel": {
-      "overview": "Postman is an AI-native API platform that enables developers to design, test, manage, and distribute APIs and services at enterprise scale. It streamlines the entire API lifecycle, fostering collaboration among engineering teams.",
-      "target_audience": "Software engineers, developers, and organizations building, testing, and managing APIs and services.",
+      "overview": "Postman is an AI-native API platform that enables developers to design, build, test, manage, and distribute APIs and services at enterprise scale. It provides a collaborative environment for engineers to streamline the entire API lifecycle.",
+      "target_audience": "Software engineers and development teams building, testing, and managing APIs, as well as enterprises seeking API governance and collaboration.",
       "contact_emails": [
         "info@postman.com",
         "info-jp@postman.com",
@@ -16,7 +16,7 @@
         {
           "name": "Abhinav Asthana",
           "role": "CEO / Co-Founder",
-          "linkedin_url": null
+          "linkedin_url": "https://www.linkedin.com/in/abhinavasthana"
         },
         {
           "name": "Ankit Sobti",
@@ -39,16 +39,16 @@
       "https://postman.com/company/careers",
       "https://postman.com/company/contact-us"
     ],
-    "usage_tokens": 4609,
-    "estimated_cost_usd": 0.001012
+    "usage_tokens": 4662,
+    "estimated_cost_usd": 0.001051
   },
   {
     "domain": "supabase.com",
     "status": "ok",
     "error": null,
     "intel": {
-      "overview": "Supabase provides an open‑source Postgres‑based development platform that adds authentication, realtime, storage, RESTful APIs, edge functions, and vector embeddings, allowing developers to build and scale applications from a weekend to millions of users. It offers free and paid plans with scalable compute, storage, and enterprise features, backed by a large global developer community.",
-      "target_audience": "Developers and product teams building web, mobile, or AI applications who need a ready‑to‑use backend platform with authentication, realtime data, storage, and scalable infrastructure.",
+      "overview": "Supabase provides an open‑source Postgres‑based development platform that adds authentication, real‑time APIs, storage, edge functions, and vector embeddings, allowing developers to build full‑stack applications quickly. It scales from a weekend prototype to millions of users while remaining transparent, self‑hostable, and community‑driven.",
+      "target_audience": "Developers and product teams building web, mobile, or AI applications who need a scalable, open‑source backend platform with built‑in auth, database, realtime, and storage capabilities.",
       "contact_emails": [
         "legal@supabase.com",
         "privacy@supabase.com",
@@ -60,15 +60,15 @@
         {
           "name": "Jakob Steinn",
           "role": "Co‑founder & Tech Lead",
-          "linkedin_url": null
+          "linkedin_url": "https://dk.linkedin.com/in/jakobsteinn"
         },
         {
           "name": "Tracy Lane",
-          "role": "General Counsel / Grievance Officer",
-          "linkedin_url": null
+          "role": "General Counsel (Grievance Officer)",
+          "linkedin_url": "https://www.linkedin.com/in/tracy-lane-5baa7023"
         }
       ],
-      "confidence_score": 0.93
+      "confidence_score": 0.92
     },
     "pages_crawled": [
       "https://supabase.com",
@@ -78,16 +78,16 @@
       "https://supabase.com/pricing",
       "https://supabase.com/careers"
     ],
-    "usage_tokens": 4761,
-    "estimated_cost_usd": 0.001099
+    "usage_tokens": 4770,
+    "estimated_cost_usd": 0.001106
   },
   {
     "domain": "vapi.ai",
     "status": "ok",
     "error": null,
     "intel": {
-      "overview": "Vapi offers a unified, API‑first platform for building, testing, and deploying voice AI agents at enterprise scale, providing orchestration, real‑time monitoring, and enterprise‑grade configurability. It handles infrastructure, compliance, and scalability so customers can launch voice agents quickly and improve customer experiences.",
-      "target_audience": "Enterprises and development teams building voice AI agents for customer support, contact centers, and other high‑volume voice interactions.",
+      "overview": "Vapi provides a unified, API‑first platform for building, testing, and deploying voice agents at enterprise scale, handling infrastructure, monitoring, and compliance. It enables companies to launch voice AI quickly, track performance, and maintain high‑quality customer experiences.",
+      "target_audience": "Enterprises and development teams building voice AI agents and conversational phone experiences, especially those needing scalability, compliance, and dedicated support.",
       "contact_emails": [
         "talent@vapi.ai"
       ],
@@ -95,17 +95,17 @@
         {
           "name": "Jason Mitura",
           "role": "VP of Software Development",
-          "linkedin_url": null
+          "linkedin_url": "https://www.linkedin.com/in/jasonmitura"
         }
       ],
-      "confidence_score": 0.9
+      "confidence_score": 0.88
     },
     "pages_crawled": [
       "https://vapi.ai",
       "https://vapi.ai/pricing",
       "https://vapi.ai/careers"
     ],
-    "usage_tokens": 2765,
-    "estimated_cost_usd": 0.000674
+    "usage_tokens": 2713,
+    "estimated_cost_usd": 0.000635
   }
 ]

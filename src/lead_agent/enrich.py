@@ -22,6 +22,31 @@ LINKEDIN_IN_RE = re.compile(r"https?://([a-z]{2,3}\.)?linkedin\.com/in/[^\s\"'?#
 MAX_LOOKUPS = 5
 
 
+def _name_tokens(name: str) -> List[str]:
+    return [t for t in re.split(r"[^a-z]+", name.lower()) if len(t) >= 3]
+
+
+def _slug_letters(url: str) -> str:
+    """Lowercased letters of the /in/ slug (drops digits, dashes, locale prefix)."""
+    m = re.search(r"/in/([^/?#]+)", url, re.IGNORECASE)
+    return re.sub(r"[^a-z]", "", m.group(1).lower()) if m else ""
+
+
+def _name_matches(name: str, url: str) -> bool:
+    """Accept a profile only if the person's first AND last name appear in the slug.
+
+    Prevents grabbing an unrelated profile that Google/SerpAPI happened to surface.
+    """
+    tokens = _name_tokens(name)
+    if not tokens:
+        return False
+    slug = _slug_letters(url)
+    if not slug:
+        return False
+    first, last = tokens[0], tokens[-1]
+    return first in slug and last in slug
+
+
 def _company_name(domain: str) -> str:
     host = urlparse(domain if "//" in domain else "//" + domain).netloc or domain
     host = host[4:] if host.startswith("www.") else host
@@ -38,7 +63,7 @@ def _search_tavily(query: str, cfg: Settings) -> List[str]:
         from tavily import TavilyClient
 
         client = TavilyClient(api_key=cfg.tavily_api_key)
-        resp = client.search(query=query, max_results=5)
+        resp = client.search(query=query, max_results=8)
         return [r.get("url", "") for r in resp.get("results", [])]
     except Exception:  # noqa: BLE001
         return []
@@ -48,7 +73,7 @@ def _search_serpapi(query: str, cfg: Settings) -> List[str]:
     try:
         resp = requests.get(
             "https://serpapi.com/search.json",
-            params={"engine": "google", "q": query, "api_key": cfg.serpapi_key, "num": 5},
+            params={"engine": "google", "q": query, "api_key": cfg.serpapi_key, "num": 10},
             timeout=15,
         )
         data = resp.json()
@@ -65,10 +90,11 @@ def _find_linkedin(name: str, company: str, cfg: Settings) -> Optional[str]:
     elif cfg.serpapi_key:
         urls = _search_serpapi(query, cfg)
 
+    # Only accept a /in/ profile whose slug matches the person's name.
     for url in urls:
-        found = _first_linkedin_url(url)
-        if found:
-            return found
+        profile = _first_linkedin_url(url)
+        if profile and _name_matches(name, profile):
+            return profile
     return None
 
 
