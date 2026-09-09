@@ -1,0 +1,22 @@
+# Environment / secrets
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Playwright
+playwright-report/
+
+# Outputs (keep a curated sample in the repo; ignore ad-hoc runs)
+output_*.json
+output_*.csv
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

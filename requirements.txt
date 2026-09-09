@@ -1,0 +1,18 @@
+# --- Core ---
+playwright>=1.47          # headless browser automation (JS-rendered content)
+beautifulsoup4>=4.12      # HTML parsing / boilerplate stripping
+lxml>=5.2                 # fast parser backend for bs4
+trafilatura>=1.9          # main-content extraction -> clean text/markdown
+markdownify>=0.13         # HTML -> markdown fallback
+
+# --- LLM & structured output ---
+groq>=0.11                # Groq API client
+instructor>=1.5           # Pydantic-typed structured outputs over the LLM
+pydantic>=2.7
+
+# --- Bonus: LinkedIn founder lookup ---
+tavily-python>=0.5        # search API (or SerpAPI, see .env.example)
+
+# --- Utils ---
+python-dotenv>=1.0        # load .env
+tenacity>=9.0             # retries with backoff

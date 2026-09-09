@@ -1,0 +1,4 @@
+# One company domain per line. Lines starting with # are ignored.
+postman.com
+supabase.com
+vapi.ai
